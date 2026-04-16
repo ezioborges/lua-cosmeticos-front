@@ -29,10 +29,9 @@ export default function LoginPage() {
       // Salvando o token (ajuste conforme seu retorno da API)
       localStorage.setItem('token', accessToken);
 
-
       // Redireciona para a home ou dashboard
       router.push('/home');
-    } catch (err: any) {
+    } catch {
       setError('Credenciais inválidas. Tente novamente.');
     } finally {
       setLoading(false);
@@ -44,20 +43,16 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl">
         <div className="text-center">
           <div className="bg-brand-dark mx-auto flex h-16 w-16 items-center justify-center rounded-full">
-            <Moon className="text-amber-400 h-20 w-20" fill="currentColor" />
+            <Moon className="h-20 w-20 text-amber-400" fill="currentColor" />
           </div>
-          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            Lua Cosméticos
-          </h2>
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Lua Cosméticos</h2>
         </div>
 
         {/* Formulário */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4 rounded-md shadow-sm">
             <div>
-              <label className="text-sm font-medium text-gray-700">
-                E-mail
-              </label>
+              <label className="text-sm font-medium text-gray-700">E-mail</label>
               <input
                 type="email"
                 required

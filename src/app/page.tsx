@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'; // Necessário para usar hooks do React
+
 import Link from 'next/link';
 import { Moon } from 'lucide-react';
 
@@ -9,64 +10,83 @@ const featuredProducts = [
     name: 'Sérum Facial Iluminador',
     price: 'R$ 89,90',
     category: 'Skincare',
-    imageUrl: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80',
+    imageUrl:
+      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 2,
     name: 'Creme Hidratante Corporal',
     price: 'R$ 65,00',
     category: 'Corpo',
-    imageUrl: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=400&q=80',
+    imageUrl:
+      'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 3,
     name: 'Óleo Essencial de Lavanda',
     price: 'R$ 45,50',
     category: 'Bem-estar',
-    imageUrl: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=400&q=80',
+    imageUrl:
+      'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 4,
     name: 'Sabonete Argila Rosa',
     price: 'R$ 28,00',
     category: 'Banho',
-    imageUrl: 'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&w=400&q=80',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&w=400&q=80',
   },
 ];
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
-      
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 flex items-center justify-between bg-white/80 px-6 py-4 shadow-sm backdrop-blur-md md:px-12">
         <div className="flex items-center gap-2">
           {/* Reutilizando o SVG da Lua */}
           <div className="flex h-10 w-10 items-center justify-center">
-            <Moon className="text-amber-400 h-10 w-10" fill="currentColor" />
+            <Moon className="h-10 w-10 text-amber-400" fill="currentColor" />
           </div>
           <h1 className="text-xl font-bold tracking-tight text-stone-900">Lua Cosméticos</h1>
         </div>
 
         <nav className="hidden space-x-8 md:flex">
-          <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Novidades</a>
-          <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Skincare</a>
-          <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Corpo e Banho</a>
-          <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Sobre Nós</a>
+          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
+            Novidades
+          </a>
+          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
+            Skincare
+          </a>
+          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
+            Corpo e Banho
+          </a>
+          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
+            Sobre Nós
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">
           {/* Adicionei o Link do Next.js aqui para conectar com sua tela de login */}
-          <Link 
-            href="/login" 
-            className="hidden text-sm font-medium hover:text-amber-600 md:block"
-          >
+          <Link href="/login" className="hidden text-sm font-medium hover:text-amber-600 md:block">
             Entrar
           </Link>
           <button className="flex items-center justify-center rounded-full bg-stone-900 p-2 text-white transition-colors hover:bg-stone-700">
             {/* Ícone de Sacola de Compras genérico */}
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
             </svg>
           </button>
         </div>
@@ -75,9 +95,9 @@ export default function HomePage() {
       {/* 2. HERO SECTION */}
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-stone-200">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1920&q=80" 
-            alt="Ingredientes naturais" 
+          <img
+            src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1920&q=80"
+            alt="Ingredientes naturais"
             className="h-full w-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-stone-900/30 mix-blend-multiply" />
@@ -88,9 +108,10 @@ export default function HomePage() {
             A natureza cuidando da sua pele.
           </h2>
           <p className="mb-8 text-lg text-stone-100 sm:text-xl">
-            Fórmulas limpas, veganas e cruelty-free. Revele o seu brilho natural com ingredientes que respeitam você e o meio ambiente.
+            Fórmulas limpas, veganas e cruelty-free. Revele o seu brilho natural com ingredientes
+            que respeitam você e o meio ambiente.
           </p>
-          <button className="rounded-full bg-amber-500 px-8 py-3 text-sm font-bold uppercase tracking-wider text-stone-900 transition-all hover:bg-amber-400 hover:shadow-lg">
+          <button className="rounded-full bg-amber-500 px-8 py-3 text-sm font-bold tracking-wider text-stone-900 uppercase transition-all hover:bg-amber-400 hover:shadow-lg">
             Explorar Coleção
           </button>
         </div>
@@ -103,10 +124,10 @@ export default function HomePage() {
           <p className="mt-2 text-stone-500">Os queridinhos da nossa comunidade.</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {featuredProducts.map((product) => (
             <div key={product.id} className="group relative cursor-pointer">
-              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl bg-stone-200 xl:aspect-w-7 xl:aspect-h-8">
+              <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-xl bg-stone-200">
                 <img
                   src={product.imageUrl}
                   alt={product.name}
@@ -115,7 +136,9 @@ export default function HomePage() {
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <p className="text-xs text-stone-500 uppercase tracking-wider">{product.category}</p>
+                  <p className="text-xs tracking-wider text-stone-500 uppercase">
+                    {product.category}
+                  </p>
                   <h4 className="text-sm font-medium text-stone-900">{product.name}</h4>
                 </div>
                 <p className="text-sm font-bold text-stone-900">{product.price}</p>

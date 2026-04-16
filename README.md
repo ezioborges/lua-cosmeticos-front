@@ -122,9 +122,9 @@ Resposta esperada pelo frontend:
 
 ```json
 {
-	"userLog": {
-		"access_token": "<jwt-ou-token>"
-	}
+  "userLog": {
+    "access_token": "<jwt-ou-token>"
+  }
 }
 ```
 

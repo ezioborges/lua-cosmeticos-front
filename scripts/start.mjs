@@ -70,14 +70,9 @@ function openBrowser(targetUrl) {
 
   const currentPlatform = platform();
   const command =
-    currentPlatform === 'darwin'
-      ? 'open'
-      : currentPlatform === 'win32'
-        ? 'cmd'
-        : 'xdg-open';
+    currentPlatform === 'darwin' ? 'open' : currentPlatform === 'win32' ? 'cmd' : 'xdg-open';
 
-  const args =
-    currentPlatform === 'win32' ? ['/c', 'start', '', targetUrl] : [targetUrl];
+  const args = currentPlatform === 'win32' ? ['/c', 'start', '', targetUrl] : [targetUrl];
 
   const opener = spawn(command, args, {
     detached: true,
@@ -98,18 +93,14 @@ const resolvedRequestedPort = Number.isFinite(requestedPort)
     : 3000;
 
 const port =
-  nextMode === 'dev'
-    ? resolvedRequestedPort
-    : await findAvailablePort(resolvedRequestedPort);
+  nextMode === 'dev' ? resolvedRequestedPort : await findAvailablePort(resolvedRequestedPort);
 
 process.env.PORT = String(port);
 
 const url = `http://localhost:${port}/login`;
 
 const nextExecutable =
-  process.platform === 'win32'
-    ? '.\\node_modules\\.bin\\next.cmd'
-    : './node_modules/.bin/next';
+  process.platform === 'win32' ? '.\\node_modules\\.bin\\next.cmd' : './node_modules/.bin/next';
 
 const child = spawn(nextExecutable, [nextMode], {
   env: process.env,
