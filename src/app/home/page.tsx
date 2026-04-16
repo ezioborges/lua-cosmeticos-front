@@ -47,45 +47,6 @@ export default function HomePage() {
   };
   return (
     <div className="min-h-screen bg-[#FDFCFB] text-stone-900">
-      {/* --- NAVBAR --- */}
-      <header className="sticky top-0 z-50 border-b border-stone-100 bg-white/70 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
-            <Moon className="h-7 w-7 text-amber-500" fill="currentColor" />
-            <span className="font-serif text-xl font-bold tracking-tight">Lua Cosméticos</span>
-          </div>
-
-          <nav className="hidden gap-8 text-sm font-medium tracking-widest uppercase md:flex">
-            <a href="#" className="transition-colors hover:text-amber-600">
-              Loja
-            </a>
-            <a href="#" className="transition-colors hover:text-amber-600">
-              Rotinas
-            </a>
-            <a href="#" className="transition-colors hover:text-amber-600">
-              Sobre
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-5">
-            {/* Trocamos o Link pelo button e adicionamos o onClick */}
-            <button
-              onClick={handleLogout}
-              className="cursor-pointer text-sm font-semibold text-stone-500 transition-colors hover:text-red-600"
-            >
-              Sair
-            </button>
-
-            <button className="relative">
-              <ShoppingBag className="h-6 w-6 stroke-[1.5px]" />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-white">
-                0
-              </span>
-            </button>
-          </div>
-        </div>
-      </header>
-
       {/* --- HERO SECTION --- */}
       <section className="relative h-[85vh] w-full bg-stone-100">
         <img
@@ -201,13 +162,6 @@ export default function HomePage() {
           </form>
         </div>
       </section>
-
-      {/* --- FOOTER --- */}
-      <footer className="border-t border-stone-200 py-12">
-        <div className="mx-auto max-w-7xl px-6 text-center text-sm text-stone-400">
-          <p>&copy; {new Date().getFullYear()} Lua Cosméticos — Feito com amor e natureza.</p>
-        </div>
-      </footer>
     </div>
   );
 }

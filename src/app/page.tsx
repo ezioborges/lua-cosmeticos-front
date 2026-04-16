@@ -1,8 +1,5 @@
 'use client'; // Necessário para usar hooks do React
 
-import Link from 'next/link';
-import { Moon } from 'lucide-react';
-
 // Dados simulados para o caso de estudo
 const featuredProducts = [
   {
@@ -42,57 +39,7 @@ const featuredProducts = [
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
-      {/* 1. HEADER */}
-      <header className="sticky top-0 z-50 flex items-center justify-between bg-white/80 px-6 py-4 shadow-sm backdrop-blur-md md:px-12">
-        <div className="flex items-center gap-2">
-          {/* Reutilizando o SVG da Lua */}
-          <div className="flex h-10 w-10 items-center justify-center">
-            <Moon className="h-10 w-10 text-amber-400" fill="currentColor" />
-          </div>
-          <h1 className="text-xl font-bold tracking-tight text-stone-900">Lua Cosméticos</h1>
-        </div>
-
-        <nav className="hidden space-x-8 md:flex">
-          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
-            Novidades
-          </a>
-          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
-            Skincare
-          </a>
-          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
-            Corpo e Banho
-          </a>
-          <a href="#" className="text-sm font-medium transition-colors hover:text-amber-600">
-            Sobre Nós
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          {/* Adicionei o Link do Next.js aqui para conectar com sua tela de login */}
-          <Link href="/login" className="hidden text-sm font-medium hover:text-amber-600 md:block">
-            Entrar
-          </Link>
-          <button className="flex items-center justify-center rounded-full bg-stone-900 p-2 text-white transition-colors hover:bg-stone-700">
-            {/* Ícone de Sacola de Compras genérico */}
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-              />
-            </svg>
-          </button>
-        </div>
-      </header>
-
-      {/* 2. HERO SECTION */}
+      {/* HERO SECTION */}
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-stone-200">
         <div className="absolute inset-0 z-0">
           <img
@@ -117,7 +64,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. VITRINE DE PRODUTOS */}
+      {/* VITRINE DE PRODUTOS */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <h3 className="text-3xl font-bold text-stone-900">Mais Vendidos</h3>
@@ -150,13 +97,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* 4. FOOTER */}
-      <footer className="bg-stone-900 py-12 text-center text-stone-400">
-        <p className="text-sm">
-          &copy; {new Date().getFullYear()} Lua Cosméticos. Um projeto de estudo técnico.
-        </p>
-      </footer>
     </div>
   );
 }
