@@ -91,13 +91,20 @@ function openBrowser(targetUrl) {
 await loadEnv();
 
 const requestedPort = Number(process.env.PORT || 3000);
-const port = Number.isFinite(requestedPort)
-  ? await findAvailablePort(requestedPort)
-  : 3000;
+const resolvedRequestedPort = Number.isFinite(requestedPort)
+  ? requestedPort
+  : nextMode === 'dev'
+    ? 3001
+    : 3000;
+
+const port =
+  nextMode === 'dev'
+    ? resolvedRequestedPort
+    : await findAvailablePort(resolvedRequestedPort);
 
 process.env.PORT = String(port);
 
-const url = `http://localhost:${port}`;
+const url = `http://localhost:${port}/login`;
 
 const nextExecutable =
   process.platform === 'win32'
