@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '@/services/api';
 import { Moon } from 'lucide-react';
+import { AuthService } from '@/services/auth.service';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -19,13 +20,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await api.post('/auth/login', { email, password });
-      const accessToken = response.data?.userLog.access_token;
-
-      if (!accessToken) {
-        throw new Error('Token not found');
-      }
-
+      const accessToken = await AuthService.login(email, password);
       // Salvando o token (ajuste conforme seu retorno da API)
       localStorage.setItem('token', accessToken);
 
