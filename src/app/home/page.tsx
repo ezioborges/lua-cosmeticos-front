@@ -62,7 +62,7 @@ export default function HomePage() {
             href="/loja"
             className="mt-10 flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold tracking-widest text-stone-900 uppercase transition-transform hover:scale-105"
           >
-            Ver Produtos <ArrowRight className="h-4 w-4" />
+            Ver Produtos legais <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
