@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { api } from '@/services/api';
 import { Moon } from 'lucide-react';
 import { AuthService } from '@/services/auth.service';
 

@@ -19,7 +19,7 @@ Fluxo atual de login:
 
 1. Usuario informa e-mail e senha em `/login`
 2. Frontend envia `POST /auth/login` para a API configurada
-3. Token e lido de `response.data.userLog.access_token`
+3. Token e lido de `response.userLog.access_token`
 4. Token e salvo no `localStorage` com chave `token`
 5. Usuario e redirecionado para `/`
 
@@ -29,7 +29,7 @@ Fluxo atual de login:
 - React `19.2.4`
 - TypeScript `5`
 - Tailwind CSS `4`
-- Axios para consumo HTTP
+- Fetch API para consumo HTTP
 - Lucide React para icones
 - ESLint (Next + TypeScript)
 - Vitest + Testing Library para testes
@@ -49,7 +49,7 @@ Fluxo atual de login:
 |  |  |- login/
 |  |  |  |- page.tsx           # Tela de login e autenticacao
 |  |- services/
-|  |  |- api.ts                # Cliente Axios e baseURL da API
+|  |  |- auth.service.ts       # Fetch + fluxo de login
 |  |- __tests__/
 |  |  |- dummy.test.ts         # Teste inicial de setup
 |- next.config.ts
@@ -109,7 +109,7 @@ npm run test     # Testes com Vitest
 
 ## Integracao com API
 
-Cliente HTTP centralizado em `src/services/api.ts`:
+Consumo HTTP via Fetch em `src/services/auth.service.ts`:
 
 - `baseURL`: `process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3333'`
 - Header padrao: `Content-Type: application/json`

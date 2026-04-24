@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Moon, ShoppingBag, ArrowRight, Leaf, Droplets, Sparkles } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { ShoppingBag, ArrowRight, Leaf, Droplets, Sparkles } from 'lucide-react';
 
 const products = [
   {
@@ -37,22 +37,17 @@ const products = [
 ];
 
 export default function HomePage() {
-  const router = useRouter();
-
-  // função que limpa o token ao realizar logout
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-
-    router.push('/');
-  };
   return (
     <div className="min-h-screen bg-[#FDFCFB] text-stone-900">
       {/* --- HERO SECTION --- */}
       <section className="relative h-[85vh] w-full bg-stone-100">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1590156221122-c4464c8d8d73?w=1600&q=80"
           alt="Cosméticos Naturais"
-          className="h-full w-full object-cover opacity-80"
+          fill
+          className="object-cover opacity-80"
+          sizes="100vw"
+          priority
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-center">
           <h2 className="max-w-4xl font-serif text-5xl leading-tight font-light text-white md:text-7xl">
@@ -118,11 +113,13 @@ export default function HomePage() {
                 key={p.id}
                 className="group relative flex flex-col bg-white p-4 shadow-sm transition-shadow hover:shadow-xl"
               >
-                <div className="overflow-hidden rounded-sm">
-                  <img
+                <div className="relative h-64 w-full overflow-hidden rounded-sm">
+                  <Image
                     src={p.img}
                     alt={p.name}
-                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
                 <div className="mt-6">

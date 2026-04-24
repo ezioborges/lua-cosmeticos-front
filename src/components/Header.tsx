@@ -2,27 +2,16 @@
 
 import { LogOut, Moon, ShoppingBag, User } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 export function Header() {
   const router = useRouter();
   const pathName = usePathname(); // pega a URL atual (ex: '/', '/login)
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Cria o estado que vai controlar o Toggle
-  // useEffect monitora as mudanças de estado
-  // Assim que o cabeçalho é carregado na tela, ele procura o Token
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(!!token); // o '!!' transforma o token em boleano para fazer a troca entre 'Entrar' e 'Sair'
-    }
-  }, [pathName]); // agora o useEffect fica observado as mudanças do pathname
+  const isLoggedIn =
+    typeof window !== 'undefined' && Boolean(localStorage.getItem('token'));
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setIsLoggedIn(false); // se não tiver token o botão muda para 'Entrar'
     router.push('/');
   };
 

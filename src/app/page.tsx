@@ -1,5 +1,7 @@
 'use client'; // Necessário para usar hooks do React
 
+import Image from 'next/image';
+
 // Dados simulados para o caso de estudo
 const featuredProducts = [
   {
@@ -42,10 +44,13 @@ export default function HomePage() {
       {/* HERO SECTION */}
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-stone-200">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1920&q=80"
             alt="Ingredientes naturais"
-            className="h-full w-full object-cover opacity-60"
+            fill
+            className="object-cover opacity-60"
+            sizes="100vw"
+            priority
           />
           <div className="absolute inset-0 bg-stone-900/30 mix-blend-multiply" />
         </div>
@@ -74,11 +79,13 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {featuredProducts.map((product) => (
             <div key={product.id} className="group relative cursor-pointer">
-              <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-xl bg-stone-200">
-                <img
+              <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 relative w-full overflow-hidden rounded-xl bg-stone-200">
+                <Image
                   src={product.imageUrl}
                   alt={product.name}
-                  className="h-72 w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  fill
+                  className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />
               </div>
               <div className="mt-4 flex justify-between">
