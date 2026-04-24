@@ -25,8 +25,10 @@ export default function LoginPage() {
 
       // Redireciona para a home ou dashboard
       router.push('/home');
-    } catch {
-      setError('Credenciais inválidas. Tente novamente.');
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }

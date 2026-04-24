@@ -10,8 +10,22 @@ export const AuthService = {
     });
 
     if (!response.ok) {
-      const message = await response.text();
-      throw new Error(message || 'Request failed');
+      let message = 'Request failed';
+      const contentType = response.headers.get('content-type') ?? '';
+
+      if (contentType.includes('application/json')) {
+        const data = (await response.json()) as { message?: string };
+        if (data.message) {
+          message = data.message;
+        }
+      } else {
+        const text = await response.text();
+        if (text) {
+          message = text;
+        }
+      }
+
+      throw new Error(message);
     }
 
     const data = (await response.json()) as { userLog?: { access_token?: string } };
