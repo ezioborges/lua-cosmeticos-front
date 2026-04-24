@@ -1,7 +1,6 @@
 export const AuthService = {
   async login(email: string, password: string): Promise<string> {
-    const baseURL =
-      process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3333';
+    const baseURL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3333';
     const response = await fetch(`${baseURL}/auth/login`, {
       method: 'POST',
       headers: {
@@ -15,8 +14,7 @@ export const AuthService = {
       throw new Error(message || 'Request failed');
     }
 
-    const data =
-      (await response.json()) as { userLog?: { access_token?: string } };
+    const data = (await response.json()) as { userLog?: { access_token?: string } };
     const accessToken = data.userLog?.access_token;
 
     if (!accessToken) {

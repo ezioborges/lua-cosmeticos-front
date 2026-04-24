@@ -7,8 +7,7 @@ export function Header() {
   const router = useRouter();
   const pathName = usePathname(); // pega a URL atual (ex: '/', '/login)
 
-  const isLoggedIn =
-    typeof window !== 'undefined' && Boolean(localStorage.getItem('token'));
+  const isLoggedIn = typeof window !== 'undefined' && Boolean(localStorage.getItem('token'));
 
   const handleLogout = () => {
     localStorage.removeItem('token');
